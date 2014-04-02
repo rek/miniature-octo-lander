@@ -1,0 +1,12 @@
+<div id='layout-template'>
+
+  <header>
+    <h1>{title}</h1>
+  </header>
+
+  <section>
+    <div id='list-region'></div>
+    <article id='show-region'></article>
+  </section>
+
+</div>
