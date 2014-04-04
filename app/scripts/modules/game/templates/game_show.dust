@@ -1,0 +1,5 @@
+<h2>{name}</h2>
+
+<p>More info about the game</p>
+
+<a href="/{slug}">Click here to launch</a>

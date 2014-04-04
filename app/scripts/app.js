@@ -10,6 +10,10 @@ function (Marionette) {
     App.addRegions({
         pageRegion:   '#page-region',
         mainRegion:   '#main-region',
+        // dialogRegion: Marionette.Region.Dialog.extend({
+              // el: "#dialog-region"
+        // })
+
         // same as:
         // App.container = new Backbone.Marionette.Region({el:'#main'});
     });
@@ -33,29 +37,36 @@ function (Marionette) {
 
     });
 
-    App.navigate = function(route,  options){
+    App.navigate = function(route,  options) {
         options || (options = {});
         Backbone.history.navigate(route, options);
     };
 
-    App.getCurrentRoute = function(){
+    App.getCurrentRoute = function() {
         App.log('Get current rote', 'App', 3);
         return Backbone.history.fragment;
     };
 
-    App.on('initialize:before', function (options) {
+    /**
+    * @param options
+    */
+    App.on('initialize:before', function () {
         App.log('Initialization Started', 'App', 2);
         // options.anotherThing = true; // Add more data to your options
     });
 
-
-    App.on('initialize:after', function (options) {
+    App.on('initialize:after', function () {
         if(Backbone.history){
             // note: this is async, so the rest of the init code here will run first
             require(['modules/game/app'], function () {
                 // Trigger the initial route and enable HTML5 History API support
-                Backbone.history.start({ pushState: true, root: App.root });
+                // Backbone.history.start({ pushState: true, root: App.root });
+                Backbone.history.start();
 
+                // set a default route
+                if (App.getCurrentRoute() === '') {
+                    App.trigger('game:list');
+                }
                 // App.switchApp('MyApp', {});
             });
         }
@@ -66,7 +77,7 @@ function (Marionette) {
     /**
      * App changer
      */
-    App.switchApp = function(appName, args){
+    App.switchApp = function(appName, args) {
         App.log('Switching to: ' + appName, 'App', 1);
         // do not initalise a new module if no name is given
         var currentApp = appName ? App.module(appName) : null;
@@ -78,7 +89,7 @@ function (Marionette) {
 
         App.currentApp = currentApp;
         if (currentApp) {
-          currentApp.start(args);
+            currentApp.start(args);
         }
     };
 
@@ -86,9 +97,9 @@ function (Marionette) {
      * Log function.
      * Pass all messages through here so we can disable for prod
      */
-    App.log = function(message, domain, level){
-        if(App.debug < level) { return; }
-        if(typeof message !== 'string'){
+    App.log = function(message, domain, level) {
+        if (App.debug < level) { return; }
+        if (typeof message !== 'string'){
             console.log('Fancy object (' + domain + ')', message);
         } else {
             console.log((domain || false ? '('+domain+') ' : '') + message);

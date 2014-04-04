@@ -3,6 +3,8 @@ require([
     'backbone',
     'app',
     'marionette',
+    'dust',
+    'dustMarionette',
     'templates',
 ],
 
@@ -10,9 +12,9 @@ function ($, Backbone, App) {
     'use strict';
 
     // any extras?
-    App.on("initialize:after", function(){
+    App.on("initialize:after", function() {
         // if (Backbone.history){
-          // Backbone.history.start();
+            // Backbone.history.start();
         // }
     });
 

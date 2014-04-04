@@ -3,30 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>games</title>
+    <title>image-group</title>
 
-    <!-- Point to the compiled stylesheet -->
+    <!-- build:css styles/main.min.css -->
     <link href="styles/bootstrap.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
 
-    <!-- Point to the require script -->
     <script data-main="scripts/config" src="bower_components/requirejs/require.js"></script>
+
 </head>
 <body>
-    <div id="page-region"></div>
+    <div id="page-region">
+        <a href="/g/">Home</a>
+    </div>
 
     <div id="main-region" class="container">
-      <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
+      <p>Initalizing camera...</p>
     </div>
 
     <div id="dialog-region"></div>
 
-    <script src="//localhost:35729/livereload.js"></script>
     <script>
-        // var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-        // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        // g.src='//www.google-analytics.com/ga.js';
-        // s.parentNode.insertBefore(g,s)}(document,'script'));
+      require(["//localhost:35729/livereload.js"]);
     </script>
 </body>
 </html>
