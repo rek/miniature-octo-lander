@@ -44,6 +44,9 @@ define(['app'], function(App) {
             }, {
                 name: 'Gunday',
                 slug: 'gunday'
+            }, {
+                name: 'Grav - barry',
+                slug: 'gravbar'
             }]);
 
             return fakeGames;

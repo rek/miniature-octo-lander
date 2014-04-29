@@ -1,18 +1,6 @@
 define(function(require) {
     'use strict';
     var App = require('app');
-    // var path = 'modules/game/';
-
-    // requirejs.config({
-    //     baseUrl: 'scripts/',
-    //     paths: {
-    //         'list_view': path + 'list/list_view',
-    //         'list_controller': path + 'list/list_controller',
-    //         'show_view': path + 'show/show_view',
-    //         'show_controller': path + 'show/show_controller',
-    //         'entities_game': path + 'entities/game',
-    //     }
-    // });
 
     // create a new module
     App.module('App', {
